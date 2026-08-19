@@ -926,16 +926,10 @@ body {
 
 
 .topic-card {
-
-    background: #fffaf0;
-
-    padding: 30px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5d8c5;
-
-    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 
@@ -3331,12 +3325,7 @@ body {
 
     text-align: center;
 
-    background:
-        linear-gradient(
-            rgba(43, 33, 24, 0.88),
-            rgba(43, 33, 24, 0.88)
-        ),
-        url("../images/hero.jpg");
+    background: linear-gradient(rgba(43, 33, 24, 0.88), rgba(43, 33, 24, 0.88)),url("../images/hero.jpg");
 
     background-size: cover;
 
@@ -4150,4 +4139,5 @@ main {
     flex-wrap: wrap;
 
 }
+
 

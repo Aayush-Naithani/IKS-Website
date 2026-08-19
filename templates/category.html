@@ -14,12 +14,7 @@
 <section class="category-hero">
 
     <img
-        src="{{ url_for(
-            'static',
-            filename='images/' + category.image
-        ) }}"
-        alt="{{ category.name }}"
-    >
+        src="{{ url_for('static',filename='images/' + category.image) }}" alt="{{ category.name }}">
 
     <div class="category-hero-overlay">
 
@@ -57,6 +52,8 @@
 
 <!-- ================= TOPICS ================= -->
 
+<!-- ================= TOPICS ================= -->
+
 <section class="topics-section">
 
     <div class="section-heading">
@@ -76,7 +73,13 @@
 
         {% for topic in category.topics %}
 
-        <div class="topic-card">
+        <a
+            href="{{ url_for(
+                'topic',
+                topic_id=topic.lower().replace(' ', '-')
+            ) }}"
+            class="topic-card"
+        >
 
             <div class="topic-number">
                 {{ "%02d" | format(loop.index) }}
@@ -90,7 +93,11 @@
                 Discover more about {{ topic }}.
             </p>
 
-        </div>
+            <span class="topic-arrow">
+                Explore →
+            </span>
+
+        </a>
 
         {% endfor %}
 

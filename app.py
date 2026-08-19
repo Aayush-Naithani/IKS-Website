@@ -8,7 +8,8 @@ from data.iks_data import (
     timeline,
     regions,
     quiz_questions,
-    articles
+    articles,
+    topic_files
 )
 
 app = Flask(__name__)
@@ -105,6 +106,38 @@ def library():
         articles=articles
     )
 
+@app.route("/topic/<topic_id>")
+def topic(topic_id):
+    if topic_id not in topic_files:
+        return render_template("404.html"), 404
+
+    file_path = os.path.join(
+        app.root_path,
+        "content",
+        topic_files[topic_id]
+    )
+
+    if not os.path.exists(file_path):
+        return "Topic content not found", 404
+
+    with open(
+        file_path,
+        "r",
+        encoding="utf-8"
+    ) as file:
+
+        markdown_content = file.read()
+
+    topic_html = markdown.markdown(
+        markdown_content,
+        extensions=["extra", "nl2br"]
+    )
+
+    return render_template(
+        "topic.html",
+        topic_id=topic_id,
+        topic_html=topic_html
+    )
 
 # ================= ARTICLE =================
 

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ topic_id.replace("-", " ").title() }} | Indian Knowledge Systems
+{% endblock %}
+
+{% block content %}
+
+<section class="article-hero">
+
+    <div class="article-hero-overlay">
+
+        <span>
+            MATHEMATICS
+        </span>
+
+        <h1>
+            {{ topic_id.replace("-", " ").title() }}
+        </h1>
+
+        <p>
+            Explore this topic through the Indian Knowledge Systems.
+        </p>
+
+    </div>
+
+</section>
+
+
+<main class="article-main">
+
+    <article class="article-body">
+
+        <div class="article-markdown">
+
+            {{ topic_html | safe }}
+
+        </div>
+
+        <div class="article-actions">
+
+            <a
+                href="{{ url_for(
+                    'category',
+                    category_id='mathematics'
+                ) }}"
+                class="back-link"
+            >
+                ← Back to Mathematics
+            </a>
+
+            <a
+                href="{{ url_for('explore') }}"
+                class="back-link"
+            >
+                Explore IKS →
+            </a>
+
+        </div>
+
+    </article>
+
+</main>
+
+{% endblock %}

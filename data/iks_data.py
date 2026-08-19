@@ -401,3 +401,49 @@ articles = [
     }
 
 ]
+
+topic_files = {
+
+    # Mathematics
+    "arithmetic": "mathematics/arithmetic.md",
+    "geometry": "mathematics/geometry.md",
+    "algebra": "mathematics/algebra.md",
+    "number-systems": "mathematics/number-systems.md",
+
+    # Ayurveda
+    "traditional-health-practices":
+        "ayurveda/traditional-health-practices.md",
+
+    "herbal-knowledge":
+        "ayurveda/herbal-knowledge.md",
+
+    "nutrition-and-lifestyle":
+        "ayurveda/nutrition-and-lifestyle.md",
+
+    "wellness-traditions":
+        "ayurveda/wellness-traditions.md",
+
+    # Yoga
+    "asanas":"yoga/asanas.md",
+    "meditation":"yoga/meditation.md",
+    "pranayama":"yoga/pranayama.md",
+    "yoga-philosophy":"yoga/yoga-philosophy.md",
+
+    #Astronomy
+    "celestial-observation":"astronomy/celestial-observation.md",
+    "calendars":"astronomy/calendars.md",
+    "planetary-movements":"astronomy/planetary-movements.md",
+    "timekeeping":"astronomy/timekeeping.md",
+
+    #Philosophy
+    "schools-of-philosophy":"philosophy/schools-of-philosophy.md",
+    "knowledge-and-reality":"philosophy/knowledge-and-reality.md",
+    "ethics":"philosophy/ethics.md",
+    "consciousness":"philosophy/consciousness.md",
+
+    #Architecture
+    "temple-architecture":"architecture/temple-architecture.md",
+    "traditional-design":"architecture/traditional-design.md",
+    "sculpture":"architecture/sculpture.md",
+    "heritage-structures":"architecture/heritage-structures.md"
+}
