@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Page Not Found | IKS
+{% endblock %}
+
+
+{% block content %}
+
+<section class="error-page">
+
+    <div class="error-content">
+
+        <div class="error-number">
+            404
+        </div>
+
+        <p class="section-label">
+            PAGE NOT FOUND
+        </p>
+
+        <h1>
+            This knowledge path doesn't exist.
+        </h1>
+
+        <p>
+            The page you're looking for may have been
+            moved, removed or never existed.
+        </p>
+
+        <div class="error-actions">
+
+            <a
+                href="{{ url_for('home') }}"
+                class="hero-button"
+            >
+                Go Home
+            </a>
+
+            <a
+                href="{{ url_for('explore') }}"
+                class="back-link"
+            >
+                Explore IKS →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

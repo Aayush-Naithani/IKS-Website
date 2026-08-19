@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Home | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            INDIAN KNOWLEDGE SYSTEMS
+        </p>
+
+        <h1>
+            Discover the
+            <span>Wisdom of India</span>
+        </h1>
+
+        <p class="hero-description">
+
+            Explore India's rich traditions of knowledge,
+            science, philosophy, mathematics, medicine,
+            arts and culture.
+
+        </p>
+
+        <a href="#explore" class="hero-button">
+            Explore IKS
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRODUCTION ================= -->
+
+<section class="intro">
+
+    <p class="section-label">
+        DISCOVER
+    </p>
+
+    <h2>
+        A Journey Through Indian Knowledge
+    </h2>
+
+    <p>
+        Indian Knowledge Systems represent diverse traditions
+        of intellectual, scientific, philosophical and cultural
+        inquiry that have developed across generations.
+    </p>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="explore-section" id="explore">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            EXPLORE
+        </p>
+
+        <h2>
+            Areas of Knowledge
+        </h2>
+
+        <p>
+            Discover different domains of India's knowledge heritage.
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+        {% for category in categories %}
+
+        <div class="category-card">
+
+            <div class="card-image">
+
+                <img
+                    src="{{ url_for('static',
+                    filename='images/' + category.image) }}"
+                    alt="{{ category.name }}"
+                >
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h3>
+                    {{ category.name }}
+                </h3>
+
+                <p>
+                    {{ category.description }}
+                </p>
+
+                <a href="{{ url_for('category',category_id=category.id) }}">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div class="cta-content">
+
+        <p class="section-label">
+            BEGIN YOUR JOURNEY
+        </p>
+
+        <h2>
+            Explore. Learn. Discover.
+        </h2>
+
+        <p>
+            Take a journey through India's diverse
+            traditions of knowledge and culture.
+        </p>
+
+        <a href="#explore" class="hero-button">
+            Start Exploring
+        </a>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

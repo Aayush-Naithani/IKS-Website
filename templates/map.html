@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Knowledge Map | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= MAP HEADER ================= -->
+
+<section class="map-header">
+
+    <div class="map-header-content">
+
+        <p class="section-label">
+            EXPLORE BY REGION
+        </p>
+
+        <h1>
+            Knowledge Map of India
+        </h1>
+
+        <p>
+            Explore broad knowledge traditions associated
+            with different regions of India.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAP SECTION ================= -->
+
+<section class="knowledge-map-section">
+
+    <div class="knowledge-map-container">
+
+
+        <!-- ================= MAP ================= -->
+
+        <div class="india-map">
+
+            <div class="map-title">
+
+                <span>
+                    SELECT A REGION
+                </span>
+
+            </div>
+
+
+            <!-- North -->
+
+            <button
+                class="map-region north"
+                data-region="north"
+            >
+                North
+            </button>
+
+
+            <!-- West -->
+
+            <button
+                class="map-region west"
+                data-region="west"
+            >
+                West
+            </button>
+
+
+            <!-- Central -->
+
+            <button
+                class="map-region central"
+                data-region="central"
+            >
+                Central
+            </button>
+
+
+            <!-- East -->
+
+            <button
+                class="map-region east"
+                data-region="east"
+            >
+                East
+            </button>
+
+
+            <!-- South -->
+
+            <button
+                class="map-region south"
+                data-region="south"
+            >
+                South
+            </button>
+
+
+            <!-- Northeast -->
+
+            <button
+                class="map-region northeast"
+                data-region="northeast"
+            >
+                Northeast
+            </button>
+
+        </div>
+
+
+        <!-- ================= INFORMATION PANEL ================= -->
+
+        <div class="region-info">
+
+            <div
+                id="defaultRegion"
+                class="region-default"
+            >
+
+                <div class="region-icon">
+                    🗺️
+                </div>
+
+                <h2>
+                    Select a Region
+                </h2>
+
+                <p>
+                    Click on a region of the map to
+                    explore its knowledge traditions.
+                </p>
+
+            </div>
+
+
+            {% for region in regions %}
+
+            <div
+                class="region-content"
+                id="{{ region.id }}"
+            >
+
+                <span class="region-label">
+                    REGION
+                </span>
+
+                <h2>
+                    {{ region.name }}
+                </h2>
+
+                <p>
+                    {{ region.description }}
+                </p>
+
+
+                <h3>
+                    Knowledge Traditions
+                </h3>
+
+
+                <div class="tradition-list">
+
+                    {% for tradition in region.traditions %}
+
+                    <span>
+                        {{ tradition }}
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="map-footer">
+
+    <p class="section-label">
+        DISCOVER MORE
+    </p>
+
+    <h2>
+        Explore India's Knowledge Heritage
+    </h2>
+
+    <p>
+        Dive deeper into individual areas of
+        Indian Knowledge Systems.
+    </p>
+
+    <a
+        href="{{ url_for('explore') }}"
+        class="hero-button"
+    >
+        Explore IKS →
+    </a>
+
+</section>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+
+{% endblock %}

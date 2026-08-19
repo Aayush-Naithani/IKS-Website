@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Learn | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= LEARN HEADER ================= -->
+
+<section class="learn-header">
+
+    <div class="learn-header-content">
+
+        <p class="section-label">
+            LEARNING HUB
+        </p>
+
+        <h1>
+            Learn About IKS
+        </h1>
+
+        <p>
+            Explore key ideas and test your understanding
+            through an interactive quiz.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LEARNING CARDS ================= -->
+
+<section class="learning-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            START LEARNING
+        </p>
+
+        <h2>
+            Explore Knowledge Areas
+        </h2>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <a
+            href="{{ url_for(
+                'category',
+                category_id='ayurveda'
+            ) }}"
+            class="learning-card"
+        >
+
+            <div class="learning-icon">
+                🌿
+            </div>
+
+            <h3>
+                Ayurveda
+            </h3>
+
+            <p>
+                Explore traditional approaches to health,
+                wellness and lifestyle.
+            </p>
+
+            <span>
+                Learn →
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for(
+                'category',
+                category_id='yoga'
+            ) }}"
+            class="learning-card"
+        >
+
+            <div class="learning-icon">
+                🧘
+            </div>
+
+            <h3>
+                Yoga
+            </h3>
+
+            <p>
+                Learn about physical, mental and
+                philosophical practices.
+            </p>
+
+            <span>
+                Learn →
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for(
+                'category',
+                category_id='mathematics'
+            ) }}"
+            class="learning-card"
+        >
+
+            <div class="learning-icon">
+                ∑
+            </div>
+
+            <h3>
+                Mathematics
+            </h3>
+
+            <p>
+                Explore mathematical traditions and
+                historical developments.
+            </p>
+
+            <span>
+                Learn →
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for(
+                'category',
+                category_id='astronomy'
+            ) }}"
+            class="learning-card"
+        >
+
+            <div class="learning-icon">
+                🔭
+            </div>
+
+            <h3>
+                Astronomy
+            </h3>
+
+            <p>
+                Discover traditions of celestial
+                observation and timekeeping.
+            </p>
+
+            <span>
+                Learn →
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= KNOWLEDGE LIBRARY ================= -->
+
+<section class="learn-library">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            KNOWLEDGE LIBRARY
+        </p>
+
+        <h2>
+            Read & Explore
+        </h2>
+
+        <p>
+            Explore introductory articles covering
+            different areas of Indian Knowledge Systems.
+        </p>
+
+    </div>
+
+
+    <div class="learn-articles">
+
+        {% for article in articles %}
+
+        <article class="learn-article-card">
+
+            <div class="learn-article-image">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/' + article.image
+                    ) }}"
+                    alt="{{ article.title }}"
+                >
+
+            </div>
+
+
+            <div class="learn-article-content">
+
+                <span class="article-category">
+                    {{ article.category }}
+                </span>
+
+                <h3>
+                    {{ article.title }}
+                </h3>
+
+                <p>
+                    {{ article.excerpt }}
+                </p>
+
+
+                <div class="learn-article-bottom">
+
+                    <span>
+                        {{ article.read_time }}
+                    </span>
+
+                    <a
+                        href="{{ url_for(
+                            'article',
+                            article_id=article.id
+                        ) }}"
+                    >
+                        Read Article →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section class="quiz-section" id="quiz">
+
+    <div class="quiz-container">
+
+
+        <!-- QUIZ INTRO -->
+
+        <div
+            class="quiz-intro"
+            id="quizIntro"
+        >
+
+            <div class="quiz-icon">
+                🧠
+            </div>
+
+            <p class="section-label">
+                TEST YOUR KNOWLEDGE
+            </p>
+
+            <h2>
+                IKS Knowledge Quiz
+            </h2>
+
+            <p>
+                Test what you've learned about Indian
+                Knowledge Systems.
+            </p>
+
+            <button
+                class="hero-button quiz-start"
+                id="startQuiz"
+            >
+                Start Quiz
+            </button>
+
+        </div>
+
+
+        <!-- QUIZ -->
+
+        <div
+            class="quiz-box"
+            id="quizBox"
+        >
+
+            <!-- Progress -->
+
+            <div class="quiz-progress">
+
+                <span id="questionNumber">
+                    Question 1
+                </span>
+
+                <span id="totalQuestions">
+                    / {{ quiz_questions|length }}
+                </span>
+
+            </div>
+
+
+            <!-- Progress bar -->
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+
+            </div>
+
+
+            <!-- Question -->
+
+            <h2
+                id="questionText"
+                class="question-text"
+            >
+            </h2>
+
+
+            <!-- Options -->
+
+            <div
+                class="quiz-options"
+                id="quizOptions"
+            >
+            </div>
+
+
+            <!-- Next button -->
+
+            <button
+                class="hero-button next-button"
+                id="nextQuestion"
+                disabled
+            >
+                Next Question →
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+            class="quiz-result"
+            id="quizResult"
+        >
+
+            <div class="result-icon">
+                🎉
+            </div>
+
+            <p class="section-label">
+                QUIZ COMPLETE
+            </p>
+
+            <h2>
+                Your Score
+            </h2>
+
+            <div
+                class="score"
+                id="finalScore"
+            >
+                0 / 0
+            </div>
+
+            <p id="scoreMessage">
+            </p>
+
+            <button
+                class="hero-button"
+                id="restartQuiz"
+            >
+                Try Again
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+    const quizData = {{ quiz_questions | tojson }};
+
+</script>
+
+<script src="{{ url_for('static',filename='js/quiz.js') }}"></script>
+
+{% endblock %}

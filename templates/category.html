@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ category.name }} | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= CATEGORY HERO ================= -->
+
+<section class="category-hero">
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename='images/' + category.image
+        ) }}"
+        alt="{{ category.name }}"
+    >
+
+    <div class="category-hero-overlay">
+
+        <p class="section-label">
+            INDIAN KNOWLEDGE SYSTEMS
+        </p>
+
+        <h1>
+            {{ category.name }}
+        </h1>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRODUCTION ================= -->
+
+<section class="category-intro">
+
+    <p class="section-label">
+        ABOUT
+    </p>
+
+    <h2>
+        {{ category.name }}
+    </h2>
+
+    <p>
+        {{ category.intro }}
+    </p>
+
+</section>
+
+
+<!-- ================= TOPICS ================= -->
+
+<section class="topics-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            EXPLORE
+        </p>
+
+        <h2>
+            Key Topics
+        </h2>
+
+    </div>
+
+
+    <div class="topics-grid">
+
+        {% for topic in category.topics %}
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                {{ "%02d" | format(loop.index) }}
+            </div>
+
+            <h3>
+                {{ topic }}
+            </h3>
+
+            <p>
+                Discover more about {{ topic }}.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<section class="back-section">
+
+    <a
+        href="{{ url_for('explore') }}"
+        class="hero-button"
+    >
+        ← Back to Explore
+    </a>
+
+</section>
+
+
+{% endblock %}

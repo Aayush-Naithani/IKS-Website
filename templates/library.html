@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Knowledge Library | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="library-header">
+
+    <div class="library-header-content">
+
+        <p class="section-label">
+            KNOWLEDGE LIBRARY
+        </p>
+
+        <h1>
+            Explore IKS
+        </h1>
+
+        <p>
+            Read introductory articles covering different
+            areas of Indian Knowledge Systems.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="library-section">
+
+    <div class="library-grid">
+
+        {% for article in articles %}
+
+        <article class="article-card">
+
+            <div class="article-image">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='images/' + article.image
+                    ) }}"
+                    alt="{{ article.title }}"
+                >
+
+            </div>
+
+
+            <div class="article-content">
+
+                <span class="article-category">
+                    {{ article.category }}
+                </span>
+
+                <h2>
+                    {{ article.title }}
+                </h2>
+
+                <p>
+                    {{ article.excerpt }}
+                </p>
+
+
+                <div class="article-footer">
+
+                    <span>
+                        {{ article.read_time }}
+                    </span>
+
+                    <a
+                        href="{{ url_for(
+                            'article',
+                            article_id=article.id
+                        ) }}"
+                    >
+                        Read Article →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+{% endblock %}

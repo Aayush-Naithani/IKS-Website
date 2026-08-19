@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ article.title }} | IKS
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= ARTICLE HERO ================= -->
+
+<section class="article-hero">
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename='images/' + article.image
+        ) }}"
+        alt="{{ article.title }}"
+    >
+
+
+    <div class="article-hero-overlay">
+
+        <span>
+            {{ article.category }}
+        </span>
+
+        <h1>
+            {{ article.title }}
+        </h1>
+
+        <p>
+            {{ article.read_time }}
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ARTICLE CONTENT ================= -->
+
+<main class="article-main">
+
+    <div class="article-body">
+
+        <div class="article-markdown">
+
+            {{ article_html | safe }}
+
+        </div>
+
+
+        <div class="article-actions">
+
+            <a
+                href="{{ url_for('explore') }}"
+                class="hero-button"
+            >
+                Explore More IKS
+            </a>
+
+            <a
+                href="{{ url_for('library') }}"
+                class="back-link"
+            >
+                ← Back to Library
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}

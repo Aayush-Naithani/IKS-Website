@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Timeline | Indian Knowledge Systems
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= TIMELINE HEADER ================= -->
+
+<section class="timeline-header">
+
+    <div class="timeline-header-content">
+
+        <p class="section-label">
+            JOURNEY THROUGH TIME
+        </p>
+
+        <h1>
+            IKS Timeline
+        </h1>
+
+        <p>
+            Explore broad periods associated with the development,
+            transmission and preservation of Indian knowledge traditions.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section class="timeline-section">
+
+    <div class="timeline">
+
+        {% for item in timeline %}
+
+        <div
+            class="timeline-item
+            {% if loop.index is odd %}
+            timeline-left
+            {% else %}
+            timeline-right
+            {% endif %}"
+        >
+
+            <div class="timeline-dot">
+
+                {{ item.icon }}
+
+            </div>
+
+
+            <div class="timeline-card">
+
+                <span class="timeline-period">
+
+                    {{ item.period }}
+
+                </span>
+
+
+                <h2>
+
+                    {{ item.title }}
+
+                </h2>
+
+
+                <p>
+
+                    {{ item.description }}
+
+                </p>
+
+
+                <div class="timeline-areas">
+
+                    {% for area in item.areas %}
+
+                    <span>
+
+                        {{ area }}
+
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- ================= TIMELINE FOOTER ================= -->
+
+<section class="timeline-footer">
+
+    <p class="section-label">
+        CONTINUE EXPLORING
+    </p>
+
+    <h2>
+        Discover Individual Knowledge Traditions
+    </h2>
+
+    <p>
+        Explore the different areas of Indian Knowledge Systems
+        in greater detail.
+    </p>
+
+    <a
+        href="{{ url_for('explore') }}"
+        class="hero-button"
+    >
+        Explore IKS →
+    </a>
+
+</section>
+
+
+{% endblock %}

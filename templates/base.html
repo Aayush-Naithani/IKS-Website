@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        Indian Knowledge Systems
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+
+        <a
+            href="{{ url_for('home') }}"
+            class="logo"
+        >
+            IKS
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <nav
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <a
+                href="{{ url_for('home') }}"
+                class="{% if request.endpoint == 'home' %}active{% endif %}"
+            >
+                Home
+            </a>
+
+
+            <a
+                href="{{ url_for('explore') }}"
+                class="{% if request.endpoint == 'explore' %}active{% endif %}"
+            >
+                Explore
+            </a>
+
+
+            <a
+                href="{{ url_for('timeline_page') }}"
+                class="{% if request.endpoint == 'timeline_page' %}active{% endif %}"
+            >
+                Timeline
+            </a>
+
+
+            <a
+                href="{{ url_for('knowledge_map') }}"
+                class="{% if request.endpoint == 'knowledge_map' %}active{% endif %}"
+            >
+                Knowledge Map
+            </a>
+
+
+            <a
+                href="{{ url_for('learn') }}"
+                class="{% if request.endpoint == 'learn' %}active{% endif %}"
+            >
+                Learn
+            </a>
+
+
+            <a
+                href="{{ url_for('about') }}"
+                class="{% if request.endpoint == 'about' %}active{% endif %}"
+            >
+                About
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <a
+                href="{{ url_for('home') }}"
+                class="footer-logo"
+            >
+                IKS
+            </a>
+
+            <p>
+                Exploring India's diverse intellectual,
+                scientific, philosophical and cultural
+                knowledge traditions.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Explore
+            </h3>
+
+            <a href="{{ url_for('explore') }}">
+                Knowledge Areas
+            </a>
+
+            <a href="{{ url_for('timeline_page') }}">
+                Timeline
+            </a>
+
+            <a href="{{ url_for('knowledge_map') }}">
+                Knowledge Map
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Learn
+            </h3>
+
+            <a href="{{ url_for('learn') }}">
+                Learning Hub
+            </a>
+
+            <a href="{{ url_for('library') }}">
+                Knowledge Library
+            </a>
+
+            <a href="{{ url_for('about') }}">
+                About IKS
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Project
+            </h3>
+
+            <a href="{{ url_for('about') }}">
+                About
+            </a>
+
+            <a href="{{ url_for('library') }}">
+                Sources
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Indian Knowledge Systems.
+            Built with Flask.
+        </p>
+
+        <p>
+            Educational project
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= SCROLL TOP ================= -->
+
+<button
+    id="scrollTop"
+    class="scroll-top"
+    aria-label="Scroll to top"
+>
+    ↑
+</button>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script
+    src="{{ url_for('static',filename='js/main.js') }}"></script>
+
+
+{% block scripts %}
+{% endblock %}
+
+
+</body>
+
+</html>
